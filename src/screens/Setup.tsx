@@ -14,6 +14,8 @@ import Video from '../components/Form/Video';
 import * as DocumentPicker from 'react-native-document-picker';
 
 import colors from '../utils/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import zksync from '../utils/zksync';
 
 export default ({navigation}: ScreenProps) => {
   const isFocused = useIsFocused();
@@ -23,8 +25,10 @@ export default ({navigation}: ScreenProps) => {
   const [video, setVideo] =
     useState<DocumentPicker.DocumentPickerResponse | null>(null);
   const [videoLoading, setVideoLoading] = useState<boolean>(false);
-  const [inputAddressValue, setInputAddressValue] = useState<string>('');
-  const [inputNameValue, setInputNameValue] = useState<string>('');
+  const [inputAddressValue, setInputAddressValue] = useState<string>(
+    '0xbc178995898b0f611b4360df5ad653cdebe6de3f',
+  );
+  const [inputNameValue, setInputNameValue] = useState<string>('oi');
   const [familyMemberIndex, setFamilyMemberIndex] = useState<number>(1);
   const [phase, setPhase] = useState<SetupPhaseType>('family');
   const [pieChartValue, setPieChartValue] = useState<number>(0);
@@ -68,7 +72,7 @@ export default ({navigation}: ScreenProps) => {
     try {
       setVideoLoading(true);
       // 1048576 = 1024 * 1024 = 1MB
-      if (video!.size! / 1048576 > 50) {
+      if (video != null && video!.size! / 1048576 > 50) {
         Alert.alert(
           'File size is too large. Please select a file less than 35MB',
         );
@@ -79,31 +83,30 @@ export default ({navigation}: ScreenProps) => {
       const fileFormData = new FormData();
       fileFormData.append('file', video);
 
-      // const videoIpfsHash = await appState.actions.uploadVideoToIPFS(
-      //   fileFormData,
-      // );
-      // console.log('123', videoIpfsHash);
+      const videoIpfsHash = await appState.actions.uploadVideoToIPFS(
+        fileFormData,
+      );
 
-      setVideoLoading(false);
       setVideo(video);
       setVideoLoading(false);
+      return videoIpfsHash;
     } catch (e) {
       console.error(e);
+      return '';
     }
   };
 
-  useEffect(() => {
-    if (video != null) {
-      handleUploadVideoToIpfs();
+  const handleSetupRecovery = async () => {
+    const videoIpfsHash = await handleUploadVideoToIpfs();
+    if (videoIpfsHash != null) {
+      AsyncStorage.setItem('video', videoIpfsHash);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [video]);
-
-  const handleSetupRecovery = () => {
-    // console.log('data', data);
-    // console.log('video', video);
-    // console.log('pieChartValue', pieChartValue);
-    // handleSetupRecovery
+    await zksync(
+      appState.values.connector,
+      appState.values.account,
+      pieChartValue,
+      data,
+    );
     navigation.navigate('Profile');
   };
 

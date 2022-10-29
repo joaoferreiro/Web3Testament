@@ -7,8 +7,6 @@ import {
   AppContextInterface,
 } from './context';
 
-import {ethers} from 'ethers';
-
 import {useWalletConnect} from '@walletconnect/react-native-dapp';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,7 +18,6 @@ function AppContextProvider({
 }): JSX.Element {
   const connector = useWalletConnect();
   const [account, setAccount] = useState<string>('');
-  const ethersProvider = ethers.getDefaultProvider('rinkeby');
 
   useEffect(() => {
     if (connector.connected && connector.accounts != null) {
@@ -68,33 +65,10 @@ function AppContextProvider({
     });
   };
 
-  const storeSetupFinished = async () => {
-    await AsyncStorage.setItem(account, 'account set');
-  };
-
-  const getSetupFinished = async () => {
-    const setupFinised = await AsyncStorage.getItem(account);
-    if (setupFinised !== null) {
-      return true;
-    }
-    return false;
-  };
-
   const resetSetup = async () => {
-    await AsyncStorage.removeItem(account);
+    await AsyncStorage.removeItem('testamint');
+    await AsyncStorage.removeItem('video');
   };
-
-  // const testRequest = () => {
-  //   fetch('https://goerli-api.zksync.io/api/v0.2/accounts/1', {
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //   }).then(result => {
-  //     console.log(result);
-  //   });
-  // };
 
   return (
     <AppProvider
@@ -102,7 +76,6 @@ function AppContextProvider({
         values: {
           account,
           connector,
-          ethersProvider,
         },
         actions: {
           setAccount,
@@ -110,8 +83,6 @@ function AppContextProvider({
           connectWallet,
           retrieveFromIPFS,
           uploadVideoToIPFS,
-          storeSetupFinished,
-          getSetupFinished,
           resetSetup,
         },
       }}>
@@ -129,13 +100,3 @@ function useAppState(): AppContextInterface {
 }
 
 export {AppContextProvider, AppConsumer, useAppState};
-
-// connector.sendTransaction({
-//  from: string, // Required
-//  to: string, // Required
-//  gas: string, // Required
-//  gasPrice: string, // Required
-//  value: string, // Required
-//  data: string, // Required
-//  nonce: string, // Required
-// })

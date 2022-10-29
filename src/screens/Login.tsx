@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
 import {StyleSheet, View, Image, Pressable, Text} from 'react-native';
 
 import {useAppState} from '../contexts/AppContext';
@@ -12,30 +13,17 @@ export default ({navigation}: ScreenProps) => {
 
   const handleLogin = async () => {
     appState.actions.connectWallet();
-    checkNeedsSetup();
-  };
-
-  const checkNeedsSetup = async () => {
-    const setupFinished = await appState.actions.getSetupFinished();
-    if (appState.values.account !== '') {
-      if (setupFinished) {
-        navigation.navigate('Profile');
-      } else {
-        navigation.navigate('Setup');
-      }
+    const item = await AsyncStorage.getItem('testamint');
+    if (item) {
+      navigation.navigate('Profile');
+    } else {
+      navigation.navigate('Setup');
     }
   };
-
-  useEffect(() => {
-    if (appState.values.account !== '') {
-      checkNeedsSetup();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <View style={[styles.container, styles.mainContainer]}>
-      <Text style={styles.titleText}>Welcome to StillHere</Text>
+      <Text style={styles.titleText}>Welcome to Testamint</Text>
       <Image
         source={require('../../assets/dall_e_log_in.png')}
         style={styles.image}

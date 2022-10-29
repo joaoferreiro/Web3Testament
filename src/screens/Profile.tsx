@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Button,
   FlatList,
@@ -20,6 +20,7 @@ import mockImages from '../utils/mockImages';
 import {trimHash} from '../utils/hash';
 
 import colors from '../utils/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default ({navigation}: ScreenProps) => {
   const appState = useAppState();
@@ -28,16 +29,26 @@ export default ({navigation}: ScreenProps) => {
   const [modalShown, setModalShown] = useState<boolean>(true);
   const [userHasVideo] = useState<boolean>(true);
 
-  const [yourRecoveryData] = useState<string[]>([
-    '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
-    '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
-    '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
+  const [yourRecoveryData, setYourRecoveryData] = useState<string[]>([
+    // '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
+    // '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
+    // '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
   ]);
   const [otherRecoveryData] = useState<string[]>([
-    '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
-    '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
-    '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
+    // '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
+    // '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
+    // '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
   ]);
+
+  useEffect(() => {
+    (async () => {
+      const items = await AsyncStorage.getItem('testamint');
+      if (!items) {
+        return null;
+      }
+      setYourRecoveryData(JSON.parse(items).map((item: any) => item.address));
+    })();
+  }, []);
 
   const handleStillAlive = () => {
     // still alive
@@ -62,7 +73,7 @@ export default ({navigation}: ScreenProps) => {
           color={colors.white}
           onPress={() => {
             appState.actions.killSession();
-            // appState.actions.resetSetup();
+            appState.actions.resetSetup();
             navigation.navigate('Login');
           }}
         />
@@ -111,7 +122,7 @@ export default ({navigation}: ScreenProps) => {
       </View>
       <FlatList
         style={styles.listContainer}
-        data={selectedTab ? yourRecoveryData : otherRecoveryData}
+        data={!selectedTab ? yourRecoveryData : otherRecoveryData}
         renderItem={listItem}
       />
       <Modal isVisible={modalShown}>
