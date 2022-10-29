@@ -39,7 +39,7 @@ function AppContextProvider({
   }, [connector]);
 
   const uploadVideoToIPFS = (data: FormData) => {
-    fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
+    return fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
       method: 'POST',
       headers: {
         pinata_api_key: 'cbb83f28efc6be9a93f9',
@@ -51,10 +51,33 @@ function AppContextProvider({
     })
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
-        // console.log(`ipfs://${responseJson.data.IpfsHash}`);
+        return `ipfs://${responseJson.IpfsHash}`;
       });
   };
+
+  const retrieveFromIPFS = (ipfsHash: string) => {
+    return fetch(`https://gateway.pinata.cloud/ipfs/${ipfsHash}`, {
+      method: 'GET',
+      headers: {
+        pinata_api_key: 'cbb83f28efc6be9a93f9',
+        pinata_secret_api_key:
+          '51451ec08fce0c174ab0dddd495b7234d3e3f2c6e495900c172d1d6a5bbad099',
+        'content-type': 'multipart/form-data',
+      },
+    });
+  };
+
+  // const testRequest = () => {
+  //   fetch('https://goerli-api.zksync.io/api/v0.2/accounts/1', {
+  //     method: 'GET',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //   }).then(result => {
+  //     // console.log(result);
+  //   });
+  // };
 
   return (
     <AppProvider
@@ -69,6 +92,7 @@ function AppContextProvider({
           connectWallet,
           killSession,
           uploadVideoToIPFS,
+          retrieveFromIPFS,
         },
       }}>
       {children}

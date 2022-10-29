@@ -12,6 +12,7 @@ export interface AppContextInterface {
     connectWallet: () => void;
     killSession: () => void;
     uploadVideoToIPFS: (data: FormData) => void;
+    retrieveFromIPFS: (ipfsHash: string) => void;
   };
 }
 

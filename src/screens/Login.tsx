@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, View, Image, Pressable, Text} from 'react-native';
-import {ScreenProps} from './types';
+import {ScreenProps} from '../types';
 import colors from '../utils/colors';
 import {useAppState} from '../contexts/AppContext';
 

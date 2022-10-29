@@ -1,66 +1,62 @@
 import React, {useEffect, useState} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  FlatList,
-  Pressable,
-  Alert,
-  ActivityIndicator,
-} from 'react-native';
-import {ScreenProps, SetupPhaseType} from './types';
+import {StyleSheet, Text, View, Button, Alert} from 'react-native';
+import {ScreenProps, SetupPhaseType} from '../types';
 import {useIsFocused} from '@react-navigation/native';
-import CircleSlider from '../components/CircleSlider';
 import {useAppState} from '../contexts/AppContext';
 import * as DocumentPicker from 'react-native-document-picker';
 import colors from '../utils/colors';
-import VideoInput from '../components/VideoInput';
+
+import FamilyMember from '../components/Form/FamilyMember';
+import ListFamily from '../components/Form/ListFamily';
+import Periodicity from '../components/Form/Periodicity';
+import Video from '../components/Form/Video';
 
 export default ({navigation}: ScreenProps) => {
   const isFocused = useIsFocused();
   const appState = useAppState();
 
-  const [data, setData] = useState<string[]>([]);
+  const [data, setData] = useState<{name: string; address: string}[]>([]);
   const [video, setVideo] =
     useState<DocumentPicker.DocumentPickerResponse | null>(null);
   const [videoLoading, setVideoLoading] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>('');
-  const [phase, setPhase] = useState<SetupPhaseType>('first');
+  const [inputAddressValue, setInputAddressValue] = useState<string>('');
+  const [inputNameValue, setInputNameValue] = useState<string>('');
+  const [familyMemberIndex, setFamilyMemberIndex] = useState<number>(1);
+  const [phase, setPhase] = useState<SetupPhaseType>('family');
   const [pieChartValue, setPieChartValue] = useState<number>(0);
 
   useEffect(() => {
     if (isFocused) {
-      setPhase('first');
+      setPhase('family');
     }
   }, [isFocused]);
 
   const handleGoBack = () => {
-    if (phase === 'first') {
+    if (phase === 'family') {
+      appState.actions.killSession();
       navigation.goBack();
-    } else if (phase === 'third') {
-      setPhase('second');
+    } else if (phase === 'video') {
+      setPhase('periodicity');
+    } else if (phase === 'periodicity') {
+      setPhase('list');
     } else {
-      setPhase('first');
+      setPhase('family');
     }
   };
 
   const handleAddItem = () => {
-    if (inputValue !== '') {
-      setData([...data, inputValue]);
-      setInputValue('');
+    if (inputAddressValue !== '' && inputNameValue !== '') {
+      setData([...data, {name: inputNameValue, address: inputAddressValue}]);
+      setInputAddressValue('');
+      setInputNameValue('');
+      setFamilyMemberIndex(familyMemberIndex + 1);
     }
   };
 
   const handleUploadVideo = async () => {
     const selectedFile = await DocumentPicker.pickSingle({
-      type: 'video/mp4',
       copyTo: 'documentDirectory',
     });
-
-    console.log(selectedFile);
-
     setVideo(selectedFile);
   };
 
@@ -79,12 +75,12 @@ export default ({navigation}: ScreenProps) => {
       const fileFormData = new FormData();
       fileFormData.append('file', video);
 
-      const videoIpfsHash = await appState.actions.uploadVideoToIPFS(
-        fileFormData,
-      );
+      // const videoIpfsHash = await appState.actions.uploadVideoToIPFS(
+      //   fileFormData,
+      // );
+      // console.log('123', videoIpfsHash);
 
       setVideoLoading(false);
-      console.log('videoIpfsHash', videoIpfsHash);
       setVideo(video);
       setVideoLoading(false);
     } catch (e) {
@@ -100,105 +96,60 @@ export default ({navigation}: ScreenProps) => {
   }, [video]);
 
   const handleSetupRecovery = () => {
+    console.log('data', data);
+    console.log('video', video);
+    console.log('pieChartValue', pieChartValue);
     // handleSetupRecovery
     navigation.navigate('Profile');
   };
 
-  const listItem = ({item}: {item: string}) => (
-    <View style={styles.listItem}>
-      <Text style={styles.listItemText}>{item}</Text>
-    </View>
-  );
-
-  const firstPhase = (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Setup your recovery family</Text>
-      <View style={styles.textInput}>
-        <TextInput
-          returnKeyType="go"
-          onSubmitEditing={handleAddItem}
-          defaultValue={inputValue}
-          onChangeText={(text: string) => setInputValue(text)}
-          placeholder="New Family Adress"
-          style={styles.inputText}
-        />
-      </View>
-      <View style={styles.list}>
-        <FlatList data={data} renderItem={listItem} />
-      </View>
-      <Pressable onPress={() => setPhase('second')} style={styles.button}>
-        <Text style={styles.buttonText}>{'Next'}</Text>
-      </Pressable>
-    </View>
-  );
-
-  const secondPhase = (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Warning Periodicity</Text>
-      <Text style={styles.secondaryText}>
-        From time to time you will need to push the button to prove you are with
-        us.
-      </Text>
-      <View style={styles.slider}>
-        <CircleSlider
-          btnRadius={22.5}
-          dialRadius={120}
-          dialWidth={45}
-          meterColor={colors.primary}
-          fillColor={colors.tertiary}
-          textColor={colors.primary}
-          onValueChange={(x: number) => setPieChartValue(x * 1)}
-          value={pieChartValue}
-        />
-        <Text style={styles.sliderMainText}>{pieChartValue}</Text>
-        <Text style={styles.sliderSecondaryText}>days</Text>
-      </View>
-      <Pressable onPress={() => setPhase('third')} style={styles.button}>
-        <Text style={styles.buttonText}>{'Next'}</Text>
-      </Pressable>
-    </View>
-  );
-
-  const thirdPhase = (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Record a message</Text>
-      <Text style={styles.secondaryText}>
-        You can record a video in order to share a message with your recovery
-        family.
-      </Text>
-      {videoLoading ? (
-        <ActivityIndicator style={styles.activityIndicator} />
-      ) : (
-        <>
-          <Pressable style={styles.videoInput} onPress={handleUploadVideo}>
-            <VideoInput />
-          </Pressable>
-        </>
-      )}
-      <Pressable
-        disabled={data.length === 0}
-        onPress={handleSetupRecovery}
-        style={[styles.button, data.length === 0 && styles.disabledButton]}>
-        <Text style={styles.buttonText}>{'Complete'}</Text>
-      </Pressable>
-    </View>
-  );
+  const handleRender = () => {
+    switch (phase) {
+      case 'family':
+        return (
+          <FamilyMember
+            familyMemberIndex={familyMemberIndex}
+            inputNameValue={inputNameValue}
+            setInputNameValue={setInputNameValue}
+            inputAddressValue={inputAddressValue}
+            setInputAddressValue={setInputAddressValue}
+            handleAddItem={handleAddItem}
+            setPhase={setPhase}
+          />
+        );
+      case 'list':
+        return <ListFamily data={data} />;
+      case 'periodicity':
+        return (
+          <Periodicity
+            pieChartValue={pieChartValue}
+            setPieChartValue={setPieChartValue}
+            setPhase={setPhase}
+          />
+        );
+      case 'video':
+        return (
+          <Video
+            data={data}
+            videoLoading={videoLoading}
+            handleUploadVideo={handleUploadVideo}
+            handleSetupRecovery={handleSetupRecovery}
+          />
+        );
+    }
+  };
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.backButton}>
         <Button title="Back" onPress={handleGoBack} />
       </View>
-      {phase === 'first'
-        ? firstPhase
-        : phase === 'second'
-        ? secondPhase
-        : thirdPhase}
+      {handleRender()}
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: colors.background,
@@ -207,6 +158,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
+    height: '100%',
   },
   backButton: {
     position: 'absolute',
@@ -217,7 +169,7 @@ const styles = StyleSheet.create({
   titleText: {
     width: 224,
     fontSize: 30,
-    marginTop: 55,
+    marginTop: 74,
     fontWeight: '600',
     textAlign: 'center',
     color: colors.black,
@@ -238,13 +190,16 @@ const styles = StyleSheet.create({
     borderColor: colors.tertiary,
     backgroundColor: colors.lightGray,
   },
+  secondTextInput: {
+    marginTop: 12,
+  },
   inputText: {
     fontSize: 16,
     fontWeight: '500',
     color: colors.black,
   },
   list: {
-    marginTop: 18,
+    marginTop: 49,
     width: '90%',
   },
   listItem: {
@@ -258,18 +213,29 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: colors.black,
   },
-  button: {
+  addButton: {
+    position: 'absolute',
+    bottom: 104,
     alignItems: 'center',
     justifyContent: 'center',
     width: '90%',
-    position: 'absolute',
-    bottom: 50,
     borderRadius: 100,
     paddingVertical: 12,
     paddingHorizontal: 32,
     backgroundColor: colors.primary,
   },
+  nextButton: {
+    position: 'absolute',
+    bottom: 50,
+    backgroundColor: colors.background,
+  },
+  nextButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: colors.primary,
+  },
   buttonText: {
+    fontSize: 16,
     fontWeight: '600',
     color: colors.white,
   },
@@ -294,7 +260,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginLeft: -100,
     width: 100,
-    top: '60%',
+    top: '50%',
     left: '50%',
     fontSize: 20,
     fontWeight: '400',
