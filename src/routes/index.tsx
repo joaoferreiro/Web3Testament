@@ -15,7 +15,7 @@ export default () => {
         screenOptions={{
           headerShown: false,
         }}>
-        {/* {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
+        <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Setup" component={SetupScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
