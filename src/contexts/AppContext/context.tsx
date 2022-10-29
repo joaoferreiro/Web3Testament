@@ -13,6 +13,9 @@ export interface AppContextInterface {
     killSession: () => void;
     uploadVideoToIPFS: (data: FormData) => void;
     retrieveFromIPFS: (ipfsHash: string) => void;
+    storeSetupFinished: () => Promise<void>;
+    getSetupFinished: () => Promise<boolean>;
+    resetSetup: () => Promise<void>;
   };
 }
 

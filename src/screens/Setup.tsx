@@ -100,9 +100,9 @@ export default ({navigation}: ScreenProps) => {
   }, [video]);
 
   const handleSetupRecovery = () => {
-    console.log('data', data);
-    console.log('video', video);
-    console.log('pieChartValue', pieChartValue);
+    // console.log('data', data);
+    // console.log('video', video);
+    // console.log('pieChartValue', pieChartValue);
     // handleSetupRecovery
     navigation.navigate('Profile');
   };

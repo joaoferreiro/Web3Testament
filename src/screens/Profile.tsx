@@ -6,6 +6,7 @@ import {
   Pressable,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -61,23 +62,26 @@ export default ({navigation}: ScreenProps) => {
           color={colors.white}
           onPress={() => {
             appState.actions.killSession();
+            // appState.actions.resetSetup();
             navigation.navigate('Login');
           }}
         />
       </View>
       <View style={styles.topContainer} />
-      <Pressable
-        style={styles.profilePicture}
+      <TouchableOpacity
         disabled={!userHasVideo}
-        onPress={() => navigation.navigate('Video')}>
+        onPress={() => {
+          navigation.navigate('Video');
+        }}>
         <Image
+          style={styles.profilePicture}
           source={
             userHasVideo
               ? require('../../assets/bayc_placeholder_2.png')
               : require('../../assets/bayc_placeholder.png')
           }
         />
-      </Pressable>
+      </TouchableOpacity>
       <Text style={styles.addressText}>
         {trimHash('0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb')}
       </Text>
@@ -155,11 +159,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   profilePicture: {
-    position: 'absolute',
-    top: 128,
-    marginLeft: -100,
+    marginTop: -150,
     width: 158,
-    left: '50%',
+    zIndex: 1000,
   },
   addressText: {
     fontSize: 30,

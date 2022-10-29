@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, StyleSheet, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 
 import {ScreenProps} from '../types';
 
@@ -17,7 +17,12 @@ export default ({navigation}: ScreenProps) => {
       <Pressable onPress={() => navigation.goBack()} style={styles.icon}>
         <CloseIcon />
       </Pressable>
-      <Video source={{uri: 'background'}} style={styles.backgroundVideo} />
+      <Video
+        source={{
+          uri: 'https://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4',
+        }}
+        style={styles.backgroundVideo}
+      />
     </View>
   );
 };
@@ -25,14 +30,15 @@ export default ({navigation}: ScreenProps) => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: colors.primary,
   },
   icon: {
     position: 'absolute',
-    marginLeft: 16,
-    marginTop: 65,
+    left: 16,
+    top: 65,
   },
   backgroundVideo: {
     marginTop: 237,

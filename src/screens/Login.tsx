@@ -12,13 +12,26 @@ export default ({navigation}: ScreenProps) => {
 
   const handleLogin = async () => {
     appState.actions.connectWallet();
+    checkNeedsSetup();
+  };
+
+  const checkNeedsSetup = async () => {
+    const setupFinished = await appState.actions.getSetupFinished();
+    if (appState.values.account !== '') {
+      if (setupFinished) {
+        navigation.navigate('Profile');
+      } else {
+        navigation.navigate('Setup');
+      }
+    }
   };
 
   useEffect(() => {
     if (appState.values.account !== '') {
-      navigation.navigate('Setup');
+      checkNeedsSetup();
     }
-  }, [appState.values.account, navigation]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <View style={[styles.container, styles.mainContainer]}>

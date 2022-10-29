@@ -11,6 +11,8 @@ import {ethers} from 'ethers';
 
 import {useWalletConnect} from '@walletconnect/react-native-dapp';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function AppContextProvider({
   children,
 }: {
@@ -66,6 +68,22 @@ function AppContextProvider({
     });
   };
 
+  const storeSetupFinished = async () => {
+    await AsyncStorage.setItem(account, 'account set');
+  };
+
+  const getSetupFinished = async () => {
+    const setupFinised = await AsyncStorage.getItem(account);
+    if (setupFinised !== null) {
+      return true;
+    }
+    return false;
+  };
+
+  const resetSetup = async () => {
+    await AsyncStorage.removeItem(account);
+  };
+
   // const testRequest = () => {
   //   fetch('https://goerli-api.zksync.io/api/v0.2/accounts/1', {
   //     method: 'GET',
@@ -74,7 +92,7 @@ function AppContextProvider({
   //       'Content-Type': 'application/json',
   //     },
   //   }).then(result => {
-  //     // console.log(result);
+  //     console.log(result);
   //   });
   // };
 
@@ -88,10 +106,13 @@ function AppContextProvider({
         },
         actions: {
           setAccount,
-          connectWallet,
           killSession,
-          uploadVideoToIPFS,
+          connectWallet,
           retrieveFromIPFS,
+          uploadVideoToIPFS,
+          storeSetupFinished,
+          getSetupFinished,
+          resetSetup,
         },
       }}>
       {children}
@@ -108,3 +129,13 @@ function useAppState(): AppContextInterface {
 }
 
 export {AppContextProvider, AppConsumer, useAppState};
+
+// connector.sendTransaction({
+//  from: string, // Required
+//  to: string, // Required
+//  gas: string, // Required
+//  gasPrice: string, // Required
+//  value: string, // Required
+//  data: string, // Required
+//  nonce: string, // Required
+// })
