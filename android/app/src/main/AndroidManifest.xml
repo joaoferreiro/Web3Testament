@@ -21,6 +21,9 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+        <intent-filter>
+          <data android:scheme="web3testament" />
+        </intent-filter>
       </activity>
     </application>
 </manifest>

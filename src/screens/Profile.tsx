@@ -6,7 +6,7 @@ import colors from '../utils/colors';
 export default ({navigation}: ScreenProps) => {
   return (
     <View style={[styles.container, styles.mainContainer]}>
-      <Text>HomeScreen</Text>
+      <Text style={{color: colors.black}}>Profile</Text>
     </View>
   );
 };

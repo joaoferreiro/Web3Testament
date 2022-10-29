@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, View, Image, Pressable, Text} from 'react-native';
 import {ScreenProps} from './types';
 import colors from '../utils/colors';
-
-// import {useAppState} from '../contexts/AppContext';
+import {useAppState} from '../contexts/AppContext';
 
 export default ({navigation}: ScreenProps) => {
+  const appState = useAppState();
+
+  const handleLogin = async () => {
+    appState.actions.connectWallet();
+  };
+
+  useEffect(() => {
+    if (appState.values.account !== '') {
+      navigation.navigate('Setup');
+    }
+  }, [appState.values.account, navigation]);
+
   return (
     <View style={[styles.container, styles.mainContainer]}>
       <Text style={styles.titleText}>Welcome to StillHere</Text>
@@ -13,9 +24,7 @@ export default ({navigation}: ScreenProps) => {
         source={require('../../assets/dall_e_log_in.png')}
         style={styles.image}
       />
-      <Pressable
-        onPress={() => navigation.navigate('Setup')}
-        style={styles.button}>
+      <Pressable onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>Connect</Text>
       </Pressable>
       <Pressable onPress={() => null}>
