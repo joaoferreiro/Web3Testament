@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, {useRef} from 'react';
 import {Text, View, TextInput, Pressable, Alert} from 'react-native';
 
-import {styles} from '../../screens/Setup';
 import {FormFamilyMemberProps} from '../../types';
+
+import {styles} from '../../screens/Setup';
 
 export default ({
   familyMemberIndex,
@@ -50,8 +51,8 @@ export default ({
             Alert.alert('Please add at least one contract');
           }
         }}
-        style={styles.nextButton}>
-        <Text style={styles.nextButtonText}>{'Next'}</Text>
+        style={styles.addButton}>
+        <Text style={styles.buttonText}>{'Next'}</Text>
       </Pressable>
     </View>
   );

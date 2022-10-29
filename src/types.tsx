@@ -16,6 +16,7 @@ export interface FormFamilyMemberProps {
 
 export interface FormListFamilyMemberProps {
   data: {name: string; address: string}[];
+  setPhase: React.Dispatch<React.SetStateAction<SetupPhaseType>>;
 }
 
 export interface FormPeriodicityProps {

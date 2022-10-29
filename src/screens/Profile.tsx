@@ -8,19 +8,24 @@ import {
   Text,
   View,
 } from 'react-native';
-import {ScreenProps} from '../types';
-import colors from '../utils/colors';
+
 import {useAppState} from '../contexts/AppContext';
-import {trimHash} from '../utils/hash';
-import mockImages from '../utils/mockImages';
+
+import {ScreenProps} from '../types';
+
 import Modal from 'react-native-modal';
+
+import mockImages from '../utils/mockImages';
+import {trimHash} from '../utils/hash';
+
+import colors from '../utils/colors';
 
 export default ({navigation}: ScreenProps) => {
   const appState = useAppState();
 
   const [selectedTab, setSelectedTab] = useState<boolean>(false);
   const [modalShown, setModalShown] = useState<boolean>(true);
-  const [userHasVideo] = useState<boolean>(false);
+  const [userHasVideo] = useState<boolean>(true);
 
   const [yourRecoveryData] = useState<string[]>([
     '0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb',
@@ -61,14 +66,18 @@ export default ({navigation}: ScreenProps) => {
         />
       </View>
       <View style={styles.topContainer} />
-      <Image
+      <Pressable
         style={styles.profilePicture}
-        source={
-          userHasVideo
-            ? require('../../assets/bayc_placeholder_2.png')
-            : require('../../assets/bayc_placeholder.png')
-        }
-      />
+        disabled={!userHasVideo}
+        onPress={() => navigation.navigate('Video')}>
+        <Image
+          source={
+            userHasVideo
+              ? require('../../assets/bayc_placeholder_2.png')
+              : require('../../assets/bayc_placeholder.png')
+          }
+        />
+      </Pressable>
       <Text style={styles.addressText}>
         {trimHash('0xa3A5Ef800b47D503E61EE7f0bAF7Ee80BCC5fbFb')}
       </Text>
@@ -148,7 +157,7 @@ const styles = StyleSheet.create({
   profilePicture: {
     position: 'absolute',
     top: 128,
-    marginLeft: -79,
+    marginLeft: -100,
     width: 158,
     left: '50%',
   },

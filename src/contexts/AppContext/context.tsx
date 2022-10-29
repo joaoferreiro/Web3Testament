@@ -1,5 +1,5 @@
-import {ethers} from 'ethers';
 import * as React from 'react';
+import {ethers} from 'ethers';
 
 export interface AppContextInterface {
   values: {

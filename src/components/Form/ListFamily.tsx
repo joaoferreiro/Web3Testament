@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View, FlatList} from 'react-native';
+import {Text, View, FlatList, Pressable} from 'react-native';
 
-import {styles} from '../../screens/Setup';
 import {FormListFamilyMemberProps} from '../../types';
 
-export default ({data}: FormListFamilyMemberProps) => {
+import {styles} from '../../screens/Setup';
+
+export default ({data, setPhase}: FormListFamilyMemberProps) => {
   const listItem = ({item}: {item: string}) => (
     <View style={styles.listItem}>
       <Text style={styles.listItemText}>{item}</Text>
@@ -19,6 +20,13 @@ export default ({data}: FormListFamilyMemberProps) => {
           renderItem={listItem}
         />
       </View>
+      <Pressable
+        onPress={() => {
+          setPhase('periodicity');
+        }}
+        style={styles.addButton}>
+        <Text style={styles.buttonText}>{'Next'}</Text>
+      </Pressable>
     </View>
   );
 };

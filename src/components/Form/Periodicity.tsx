@@ -1,8 +1,10 @@
 import React from 'react';
 import {Text, View, Pressable} from 'react-native';
 
-import CircleSlider from '../../components/CircleSlider';
 import {FormPeriodicityProps} from '../../types';
+
+import CircleSlider from '../icons/CircleSlider';
+
 import {styles} from '../../screens/Setup';
 import colors from '../../utils/colors';
 
@@ -32,7 +34,7 @@ export default ({
         <Text style={styles.sliderMainText}>{pieChartValue}</Text>
         <Text style={styles.sliderSecondaryText}>days</Text>
       </View>
-      <Pressable onPress={() => setPhase('video')} style={styles.nextButton}>
+      <Pressable onPress={() => setPhase('video')} style={styles.addButton}>
         <Text style={styles.buttonText}>{'Next'}</Text>
       </Pressable>
     </View>

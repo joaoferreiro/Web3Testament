@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* Web3TestamentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* Web3TestamentTests.m */; };
-		0AC5879696493456ED75BBA0 /* libPods-Web3Testament-Web3TestamentTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F194A8F5E25871245CB586A7 /* libPods-Web3Testament-Web3TestamentTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		67A5FD26E3331FA44A1838E6 /* libPods-Web3Testament.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E0684AFA398BE5C12D9E05 /* libPods-Web3Testament.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B71B3E1BDAC01018FEF8CE38 /* libPods-Web3Testament-Web3TestamentTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A374726718E61460F29C050C /* libPods-Web3Testament-Web3TestamentTests.a */; };
+		D6F1E2A16ADC578DC88F3869 /* libPods-Web3Testament.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84578D2E11E36718AD1EB14C /* libPods-Web3Testament.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +36,14 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Web3Testament/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Web3Testament/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Web3Testament/main.m; sourceTree = "<group>"; };
-		795F991B3913A2930AB63B93 /* Pods-Web3Testament.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament.release.xcconfig"; path = "Target Support Files/Pods-Web3Testament/Pods-Web3Testament.release.xcconfig"; sourceTree = "<group>"; };
+		7056079CD4627FDE789C213C /* Pods-Web3Testament.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament.debug.xcconfig"; path = "Target Support Files/Pods-Web3Testament/Pods-Web3Testament.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Web3Testament/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89E959638B8D145F2F863EC0 /* Pods-Web3Testament-Web3TestamentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament-Web3TestamentTests.release.xcconfig"; path = "Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests.release.xcconfig"; sourceTree = "<group>"; };
-		D8E0684AFA398BE5C12D9E05 /* libPods-Web3Testament.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Web3Testament.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84578D2E11E36718AD1EB14C /* libPods-Web3Testament.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Web3Testament.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		944252B66EACE39A69AE09EE /* Pods-Web3Testament-Web3TestamentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament-Web3TestamentTests.release.xcconfig"; path = "Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests.release.xcconfig"; sourceTree = "<group>"; };
+		A374726718E61460F29C050C /* libPods-Web3Testament-Web3TestamentTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Web3Testament-Web3TestamentTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD465C94D29952957B7E1650 /* Pods-Web3Testament-Web3TestamentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament-Web3TestamentTests.debug.xcconfig"; path = "Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E08E31B7F7E78B1897E45C03 /* Pods-Web3Testament.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament.release.xcconfig"; path = "Target Support Files/Pods-Web3Testament/Pods-Web3Testament.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F194A8F5E25871245CB586A7 /* libPods-Web3Testament-Web3TestamentTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Web3Testament-Web3TestamentTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5DE57C811A958054270ACFF /* Pods-Web3Testament-Web3TestamentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament-Web3TestamentTests.debug.xcconfig"; path = "Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests.debug.xcconfig"; sourceTree = "<group>"; };
-		F7C958DFC5EDEC537CFF22CF /* Pods-Web3Testament.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Web3Testament.debug.xcconfig"; path = "Target Support Files/Pods-Web3Testament/Pods-Web3Testament.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AC5879696493456ED75BBA0 /* libPods-Web3Testament-Web3TestamentTests.a in Frameworks */,
+				B71B3E1BDAC01018FEF8CE38 /* libPods-Web3Testament-Web3TestamentTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				67A5FD26E3331FA44A1838E6 /* libPods-Web3Testament.a in Frameworks */,
+				D6F1E2A16ADC578DC88F3869 /* libPods-Web3Testament.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				D8E0684AFA398BE5C12D9E05 /* libPods-Web3Testament.a */,
-				F194A8F5E25871245CB586A7 /* libPods-Web3Testament-Web3TestamentTests.a */,
+				84578D2E11E36718AD1EB14C /* libPods-Web3Testament.a */,
+				A374726718E61460F29C050C /* libPods-Web3Testament-Web3TestamentTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,10 +140,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F7C958DFC5EDEC537CFF22CF /* Pods-Web3Testament.debug.xcconfig */,
-				795F991B3913A2930AB63B93 /* Pods-Web3Testament.release.xcconfig */,
-				F5DE57C811A958054270ACFF /* Pods-Web3Testament-Web3TestamentTests.debug.xcconfig */,
-				89E959638B8D145F2F863EC0 /* Pods-Web3Testament-Web3TestamentTests.release.xcconfig */,
+				7056079CD4627FDE789C213C /* Pods-Web3Testament.debug.xcconfig */,
+				E08E31B7F7E78B1897E45C03 /* Pods-Web3Testament.release.xcconfig */,
+				CD465C94D29952957B7E1650 /* Pods-Web3Testament-Web3TestamentTests.debug.xcconfig */,
+				944252B66EACE39A69AE09EE /* Pods-Web3Testament-Web3TestamentTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -155,12 +155,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "Web3TestamentTests" */;
 			buildPhases = (
-				2BC9D762BD02C26AF09B83C5 /* [CP] Check Pods Manifest.lock */,
+				18EA53E78E8C4F97A800C2F5 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				D3D8EE97C073BDEEABC2EDA7 /* [CP] Embed Pods Frameworks */,
-				D03B09BDD74A1BB39E2C7684 /* [CP] Copy Pods Resources */,
+				1DA1C6994B401C4C7CC6FE31 /* [CP] Embed Pods Frameworks */,
+				3F9B11236E4319DF2B380C32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,14 +176,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Web3Testament" */;
 			buildPhases = (
-				3412975913334922C286922A /* [CP] Check Pods Manifest.lock */,
+				89FA9F656B2EB5870E963CD5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1991F6E722EECF3C71856CB2 /* [CP] Embed Pods Frameworks */,
-				2E5EBF4869D6107492920122 /* [CP] Copy Pods Resources */,
+				1349C1AECFD0AF4D72A27D31 /* [CP] Embed Pods Frameworks */,
+				FA28F5ED0BC656C524973F69 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,7 +266,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		1991F6E722EECF3C71856CB2 /* [CP] Embed Pods Frameworks */ = {
+		1349C1AECFD0AF4D72A27D31 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -283,7 +283,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2BC9D762BD02C26AF09B83C5 /* [CP] Check Pods Manifest.lock */ = {
+		18EA53E78E8C4F97A800C2F5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -305,24 +305,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2E5EBF4869D6107492920122 /* [CP] Copy Pods Resources */ = {
+		1DA1C6994B401C4C7CC6FE31 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3412975913334922C286922A /* [CP] Check Pods Manifest.lock */ = {
+		3F9B11236E4319DF2B380C32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89FA9F656B2EB5870E963CD5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,38 +361,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D03B09BDD74A1BB39E2C7684 /* [CP] Copy Pods Resources */ = {
+		FA28F5ED0BC656C524973F69 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3D8EE97C073BDEEABC2EDA7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament-Web3TestamentTests/Pods-Web3Testament-Web3TestamentTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Web3Testament/Pods-Web3Testament-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -430,7 +430,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F5DE57C811A958054270ACFF /* Pods-Web3Testament-Web3TestamentTests.debug.xcconfig */;
+			baseConfigurationReference = CD465C94D29952957B7E1650 /* Pods-Web3Testament-Web3TestamentTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -457,7 +457,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89E959638B8D145F2F863EC0 /* Pods-Web3Testament-Web3TestamentTests.release.xcconfig */;
+			baseConfigurationReference = 944252B66EACE39A69AE09EE /* Pods-Web3Testament-Web3TestamentTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -481,7 +481,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7C958DFC5EDEC537CFF22CF /* Pods-Web3Testament.debug.xcconfig */;
+			baseConfigurationReference = 7056079CD4627FDE789C213C /* Pods-Web3Testament.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -508,7 +508,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 795F991B3913A2930AB63B93 /* Pods-Web3Testament.release.xcconfig */;
+			baseConfigurationReference = E08E31B7F7E78B1897E45C03 /* Pods-Web3Testament.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, Text, View, Button, Alert} from 'react-native';
-import {ScreenProps, SetupPhaseType} from '../types';
+import {StyleSheet, View, Button, Alert} from 'react-native';
+
 import {useIsFocused} from '@react-navigation/native';
 import {useAppState} from '../contexts/AppContext';
-import * as DocumentPicker from 'react-native-document-picker';
-import colors from '../utils/colors';
+
+import {ScreenProps, SetupPhaseType} from '../types';
 
 import FamilyMember from '../components/Form/FamilyMember';
 import ListFamily from '../components/Form/ListFamily';
 import Periodicity from '../components/Form/Periodicity';
 import Video from '../components/Form/Video';
+
+import * as DocumentPicker from 'react-native-document-picker';
+
+import colors from '../utils/colors';
 
 export default ({navigation}: ScreenProps) => {
   const isFocused = useIsFocused();
@@ -118,7 +122,7 @@ export default ({navigation}: ScreenProps) => {
           />
         );
       case 'list':
-        return <ListFamily data={data} />;
+        return <ListFamily setPhase={setPhase} data={data} />;
       case 'periodicity':
         return (
           <Periodicity

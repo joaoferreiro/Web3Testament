@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, Pressable, ActivityIndicator} from 'react-native';
-import VideoInput from '../VideoInput';
+import VideoInput from '../icons/VideoInput';
 import {styles} from '../../screens/Setup';
 import {FormVideoProps} from '../../types';
 
@@ -29,7 +29,7 @@ export default ({
       <Pressable
         disabled={data.length === 0}
         onPress={handleSetupRecovery}
-        style={[styles.nextButton, data.length === 0 && styles.disabledButton]}>
+        style={[styles.addButton, data.length === 0 && styles.disabledButton]}>
         <Text style={styles.buttonText}>{'Complete'}</Text>
       </Pressable>
     </View>

@@ -6,6 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from '../screens/Login';
 import SetupScreen from '../screens/Setup';
 import ProfileScreen from '../screens/Profile';
+import VideoScreen from '../screens/Video';
 
 export default () => {
   const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ export default () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Setup" component={SetupScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Video" component={VideoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

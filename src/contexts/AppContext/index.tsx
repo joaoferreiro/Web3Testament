@@ -7,9 +7,8 @@ import {
   AppContextInterface,
 } from './context';
 
-// https://goerli-api.zksync.io/api/v0.2/
-
 import {ethers} from 'ethers';
+
 import {useWalletConnect} from '@walletconnect/react-native-dapp';
 
 function AppContextProvider({
