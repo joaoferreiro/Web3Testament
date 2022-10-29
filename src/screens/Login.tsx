@@ -13,12 +13,14 @@ export default ({navigation}: ScreenProps) => {
 
   const handleLogin = async () => {
     appState.actions.connectWallet();
-    const item = await AsyncStorage.getItem('testamint');
-    if (item) {
-      navigation.navigate('Profile');
-    } else {
-      navigation.navigate('Setup');
-    }
+    setTimeout(async () => {
+      const item = await AsyncStorage.getItem('testamint');
+      if (item) {
+        navigation.navigate('Profile');
+      } else {
+        navigation.navigate('Setup');
+      }
+    }, 1000);
   };
 
   return (
