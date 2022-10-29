@@ -25,10 +25,8 @@ export default ({navigation}: ScreenProps) => {
   const [video, setVideo] =
     useState<DocumentPicker.DocumentPickerResponse | null>(null);
   const [videoLoading, setVideoLoading] = useState<boolean>(false);
-  const [inputAddressValue, setInputAddressValue] = useState<string>(
-    '0xbc178995898b0f611b4360df5ad653cdebe6de3f',
-  );
-  const [inputNameValue, setInputNameValue] = useState<string>('oi');
+  const [inputAddressValue, setInputAddressValue] = useState<string>('');
+  const [inputNameValue, setInputNameValue] = useState<string>('');
   const [familyMemberIndex, setFamilyMemberIndex] = useState<number>(1);
   const [phase, setPhase] = useState<SetupPhaseType>('family');
   const [pieChartValue, setPieChartValue] = useState<number>(0);
